@@ -267,7 +267,12 @@ namespace ExcelDna.IntelliSense
             {
                 if (address.StartsWith("http", StringComparison.OrdinalIgnoreCase))
                 {
-                    Process.Start(address);
+                    var ps = new ProcessStartInfo(address)
+                    { 
+                        UseShellExecute = true, 
+                        Verb = "open" 
+                    };
+                    Process.Start(ps);
                 }
                 else
                 {
